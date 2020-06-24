@@ -7,6 +7,13 @@ inputs:
   ssh_private_key:
     description: "SSH private key for ssh connection to the target repository"
     required: false
+  personal_access_token:
+    description: "Access token for HTTPS connection to the target repository"
+    required: false
+  username:
+    description: "Username for HTTPS connection to the target repository"
+    required: false
+    default: "git"
   target_repo_url:
     description: "Target url"
     required: true
