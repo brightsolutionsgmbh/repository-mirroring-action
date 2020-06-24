@@ -4,13 +4,11 @@ set -eu
 if [ ! -z "$INPUT_SSH_PRIVATE_KEY" ]; then
   /setup-ssh.sh
   export GIT_SSH_COMMAND="ssh -v -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -l $INPUT_SSH_USERNAME"
+  git remote add mirror "$INPUT_TARGET_REPO_URL"
 fi
 
 if [ ! -z  "$INPUT_PERSONAL_ACCESS_TOKEN" ]; then
-  echo 'Setting HTTPS credentials'
-  git config user.name "$INPUT_USERNAME"
-  git config user.password "$INPUT_PERSONAL_ACCESS_TOKEN"
+  git remote add mirror "https://$INPUT_USERNAME:$INPUT_PERSONAL_ACCESS_TOKEN@$INPUT_TARGET_REPO_URL"
 fi
 
-git remote add mirror "$INPUT_TARGET_REPO_URL"
 git push --tags --force --prune -v mirror "refs/remotes/origin/*:refs/heads/*"
