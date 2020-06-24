@@ -12,5 +12,4 @@ if [ ! -z  "$INPUT_PERSONAL_ACCESS_TOKEN" ]; then
 fi
 
 git remote add mirror "$INPUT_TARGET_REPO_URL"
-git lfs fetch --all
 git push --tags --force --prune -v mirror "refs/remotes/origin/*:refs/heads/*"
