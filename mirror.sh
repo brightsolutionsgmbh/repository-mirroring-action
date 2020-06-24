@@ -7,6 +7,7 @@ if [ ! -z "$INPUT_SSH_PRIVATE_KEY" ]; then
 fi
 
 if [ ! -z  "$INPUT_PERSONAL_ACCESS_TOKEN" ]; then
+  echo 'Setting HTTPS credentials'
   git config user.name "$INPUT_USERNAME"
   git config user.password "$INPUT_PERSONAL_ACCESS_TOKEN"
 fi
