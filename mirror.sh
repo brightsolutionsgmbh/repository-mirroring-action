@@ -13,4 +13,4 @@ if [ ! -z  "$INPUT_PERSONAL_ACCESS_TOKEN" ]; then
 fi
 
 git lfs fetch --all
-git push --tags --force --prune -v mirror "refs/remotes/origin/*:refs/heads/*"
+GIT_TRACE=1 git push --tags --force --prune -v mirror "refs/remotes/origin/*:refs/heads/*"
